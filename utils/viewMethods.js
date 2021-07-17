@@ -1,40 +1,37 @@
+const promptUser = require("..");
 const db = require("../data/connection");
 
-const viewDepartments = () => {
-  console.log("view departments");
-  //   const sql = `SELECT * FROM departments`;
+const viewDepartments = new Promise((resolve, reject) => {
+  const sql = `SELECT * FROM departments`;
 
-  //   //   await promptUser();
-  //   db.query(sql, (err, results) => {
-  //     if (err) {
-  //       console.log(err);
-  //     }
-  //     console.table(results);
-  //   });
-};
+  let results = db.query(sql, (err, results) => {
+    if (err) {
+      reject(err);
+    }
+    resolve(results);
+  });
+});
 
-const viewRoles = () => {
-  console.log("view roles");
-  //     const sql = `SELECT * FROM roles`;
+const viewRoles = new Promise((resolve, reject) => {
+  const sql = `SELECT * FROM roles`;
 
-  //     db.query(sql, (err, results) => {
-  //       if (err) {
-  //         console.log(err);
-  //       }
-  //       console.table(results);
-  //     });
-};
+  let results = db.query(sql, (err, results) => {
+    if (err) {
+      reject(err);
+    }
+    resolve(results);
+  });
+});
 
-const viewEmployees = () => {
-  console.log("view employees");
-  // const sql = `SELECT * FROM employees`;
+const viewEmployees = new Promise((resolve, reject) => {
+  const sql = `SELECT * FROM employees`;
 
-  // db.query(sql, (err, results) => {
-  //   if (err) {
-  //     console.log(err);
-  //   }
-  //   console.log(results);
-  // });
-};
+  let results = db.query(sql, (err, results) => {
+    if (err) {
+      reject(err);
+    }
+    resolve(results);
+  });
+});
 
 module.exports = { viewDepartments, viewRoles, viewEmployees };

@@ -118,6 +118,9 @@ const employeePrompt = () => {
         name: "roleId",
         message: "Please select the role of the new employee",
         choices: [1, 2, 3],
+        //pass in a function that returns an array
+        //runs query to select all roles
+        //returns formatted array
       },
       {
         type: "list",

@@ -39,16 +39,28 @@ const promptUser = () => {
     .then(({ selection }) => {
       switch (selection) {
         case "View all departments":
-          viewDepartments();
-          promptUser();
+          viewDepartments
+            .then((results) => {
+              console.table(results);
+              promptUser();
+            })
+            .catch((err) => console.error);
           break;
         case "View all roles":
-          viewRoles();
-          promptUser();
+          viewRoles
+            .then((results) => {
+              console.table(results);
+              promptUser();
+            })
+            .catch((err) => console.error);
           break;
         case "View all employees":
-          viewEmployees();
-          promptUser();
+          viewEmployees
+            .then((results) => {
+              console.table(results);
+              promptUser();
+            })
+            .catch((err) => console.error);
           break;
         case "Add a department":
           departmentPrompt().then(promptUser);
@@ -66,5 +78,3 @@ const promptUser = () => {
 };
 
 promptUser();
-
-module.exports = promptUser;
