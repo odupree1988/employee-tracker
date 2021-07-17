@@ -1,4 +1,3 @@
-const promptUser = require("..");
 const db = require("../data/connection");
 
 const viewDepartments = new Promise((resolve, reject) => {
