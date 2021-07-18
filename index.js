@@ -4,12 +4,14 @@ const {
   departmentPrompt,
   rolePrompt,
   employeePrompt,
+  updateEmployeeRole,
 } = require("./utils/createMethods");
 const {
   viewDepartments,
   viewEmployees,
   viewRoles,
 } = require("./utils/viewMethods");
+const db = require("./data/connection");
 
 //connect to mysql database
 //create seeds for tables
@@ -39,27 +41,31 @@ const promptUser = () => {
     .then(({ selection }) => {
       switch (selection) {
         case "View all departments":
-          viewDepartments
-            .then((results) => {
-              console.table(results);
+          viewDepartments()
+            .then(([rows, fields]) => {
+              console.table(rows);
+            })
+            .then(() => {
               promptUser();
             })
             .catch((err) => console.error);
           break;
         case "View all roles":
-          viewRoles
-            .then((results) => {
-              console.table(results);
+          viewRoles()
+            .then(([rows, fields]) => {
+              console.table(rows);
+            })
+            .then(() => {
               promptUser();
             })
             .catch((err) => console.error);
           break;
         case "View all employees":
-          viewEmployees
-            .then((results) => {
-              console.table(results);
-              promptUser();
+          viewEmployees()
+            .then(([rows, fields]) => {
+              console.table(rows);
             })
+            .then(() => promptUser())
             .catch((err) => console.error);
           break;
         case "Add a department":
@@ -72,6 +78,7 @@ const promptUser = () => {
           employeePrompt().then(promptUser);
           break;
         case "Update an employee role":
+          updateEmployeeRole().then(promptUser);
           break;
       }
     });
