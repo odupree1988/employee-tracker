@@ -43,7 +43,6 @@ const rolePrompt = () => {
 
   return getRoleList().then(([rows]) => {
     const roles = rows.map(({ name, value }) => {
-      console.log(rows);
       return { name: name, value: value };
     });
     return inquirer
@@ -110,7 +109,6 @@ const employeePrompt = () => {
 
   return getManagerIdList().then(([rows]) => {
     const manager = rows.map(({ name, value }) => {
-      console.log(rows);
       return { name: name, value: value };
     });
 
@@ -121,7 +119,6 @@ const employeePrompt = () => {
     };
     return getRolesList().then(([rows]) => {
       const roles = rows.map(({ name, value }) => {
-        console.log(rows);
         return { name: name, value: value };
       });
 
@@ -187,10 +184,7 @@ const employeePrompt = () => {
           };
 
           console.log("Employee created successfully!");
-          const add = addEmployee(employeeData);
-          add;
-          console.log(employeeData);
-          console.log(addEmployee);
+          addEmployee(employeeData);
         });
     });
   });
@@ -242,7 +236,6 @@ const updateEmployeeRole = () => {
                         WHERE employees.id = ?`;
 
             const params = [updateData.updateRole, updateData.updateEmployee];
-            console.log(role);
 
             db.query(sql, params, (err, result) => {
               if (err) {
@@ -252,8 +245,7 @@ const updateEmployeeRole = () => {
             });
           };
           console.log("Employee created successfully!");
-          const add = updateEmployee(updateData);
-          add;
+          updateEmployee(updateData);
         });
     });
   });

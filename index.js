@@ -11,7 +11,6 @@ const {
   viewEmployees,
   viewRoles,
 } = require("./utils/viewMethods");
-const db = require("./data/connection");
 
 //connect to mysql database
 //create seeds for tables
