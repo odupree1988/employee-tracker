@@ -224,7 +224,7 @@ const updateEmployeeRole = () => {
         .prompt([
           {
             type: "list",
-            name: "updateEmplotee",
+            name: "updateEmployee",
             message: "Please choose the employee you would like to update.",
             choices: employee,
           },
@@ -238,10 +238,11 @@ const updateEmployeeRole = () => {
         .then((updateData) => {
           const updateEmployee = (updateData) => {
             const sql = `UPDATE employees
-                      SET role_id = ?
-                      WHERE employees.id = ?`;
+                        SET role_id = ?
+                        WHERE employees.id = ?`;
 
-            const params = [updateData.role, updateData.employee];
+            const params = [updateData.updateRole, updateData.updateEmployee];
+            console.log(role);
 
             db.query(sql, params, (err, result) => {
               if (err) {

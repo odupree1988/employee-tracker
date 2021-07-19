@@ -9,7 +9,9 @@ const viewDepartments = () => {
 };
 
 const viewRoles = () => {
-  const sql = `SELECT * FROM roles`;
+  const sql = `SELECT roles.id AS Id, title AS Title, dept_name AS Department, salary as Salary
+              FROM roles, departments
+              WHERE department_id = departments.id`;
 
   let results = db.promise().query(sql);
 
@@ -17,14 +19,11 @@ const viewRoles = () => {
 };
 
 const viewEmployees = () => {
-  const sql = `SELECT * FROM employees`;
-  // first_name, last_name, role_id, manager_id FROM employees
-  //     concat(manager.first_name, ' ', manager.last_name)
-  //     AS manager FROM employees
-  //     LEFT JOIN employees manager
-  //     ON manager_id = employees.manager_id = employees.id
-  //     concat(manager.first_name " ", manager.last_name);
-
+  const sql = `SELECT e.id as Id, e.first_name AS ' First Name ', e.last_name AS 'Last Name', title as Title, dept_name AS Department, salary AS Salary, concat(m.first_name, ' ',m.last_name) AS Manager 
+              FROM employees e 
+              LEFT JOIN roles ON role_id = roles.id 
+              LEFT JOIN departments on department_id = departments.id 
+              LEFT JOIN employees m on e.manager_id = m.id`;
   let results = db.promise().query(sql);
 
   return results;
