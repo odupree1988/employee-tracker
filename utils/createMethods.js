@@ -108,9 +108,15 @@ const employeePrompt = () => {
   };
 
   return getManagerIdList().then(([rows]) => {
-    const manager = rows.map(({ name, value }) => {
-      return { name: name, value: value };
+    const manager = ["none"];
+    rows.forEach((element) => {
+      manager.push(element.name);
+      console.log(element);
+      return manager;
     });
+    // const manager = rows.map(({ name, value }) => {
+    //   return { name: name, value: value };
+    // });
 
     const getRolesList = () => {
       const sql = `SELECT title AS name, id AS value FROM roles`;
@@ -168,11 +174,15 @@ const employeePrompt = () => {
             const sql = `INSERT INTO employees(first_name, last_name, role_id, manager_id)
                     VALUES (?,?,?,?)`;
 
+            var managerId = manager.indexOf(employeeData.managerId);
+            if (managerId == 0) {
+              managerId = null;
+            }
             const params = [
               employeeData.firstName,
               employeeData.lastName,
               employeeData.roleId,
-              employeeData.managerId,
+              managerId,
             ];
 
             db.query(sql, params, (err, result) => {
