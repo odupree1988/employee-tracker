@@ -31,7 +31,8 @@ to view, create or update the data that you wish to access.
 ![](src/images/tracker001.png)
 ![](src/images/tracker002.png)
 
-[Instructional Video](https://drive.google.com/file/d/1czfF_bEfqxasp7QqGd3NOq9baHnTiVFQ/preview)
+[Instructional Video](https://drive.google.com/file/d/1czfF_bEfqxasp7QqGd3NOq9baHnTiVFQ/view)
+
 
 ---
 
