@@ -28,8 +28,11 @@ After cloning the repository, run 'npm init' and 'npm install inquirer mysql2 co
 Start by running npm start in the terminal. Once the command has been entered, follow the prompts
 to view, create or update the data that you wish to access.
 
-![](public/assets/images/note001.png)
-![](public/assets/images/note002.png)
+![](src/images/tracker001.png)
+![](src/images/tracker002.png)
+
+[Instructional Video](https://drive.google.com/file/d/1czfF_bEfqxasp7QqGd3NOq9baHnTiVFQ/view)
+
 
 ---
 
